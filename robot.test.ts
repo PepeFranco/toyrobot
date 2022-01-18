@@ -126,4 +126,17 @@ describe("rotate", () => {
     testRobot.rotate("Right");
     expect(testRobot.getPosition().f).toEqual("North");
   });
+
+  it("can alternate directions", () => {
+    const testRobot = robot();
+    testRobot.place();
+    testRobot.rotate("Right");
+    expect(testRobot.getPosition().f).toEqual("East");
+    testRobot.rotate("Left");
+    expect(testRobot.getPosition().f).toEqual("North");
+    testRobot.rotate("Left");
+    expect(testRobot.getPosition().f).toEqual("West");
+    testRobot.rotate("Right");
+    expect(testRobot.getPosition().f).toEqual("North");
+  });
 });
