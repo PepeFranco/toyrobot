@@ -1,0 +1,10 @@
+{
+  "name": "toyrobot",
+  "version": "1.0.0",
+  "description": "code challenge",
+  "main": "index.js",
+  "repository": "https://github.com/PepeFranco/toyrobot.git",
+  "author": "Pepe Franco <jose.franco@outlook.com>",
+  "license": "MIT",
+  "private": false
+}
