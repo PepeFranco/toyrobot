@@ -1,5 +1,3 @@
-import { robot } from "./robot";
+const execute = () => {};
 
-const myRobot = robot();
-
-myRobot.place({ x: 1, y: 1, f: "East" });
+export { execute };
