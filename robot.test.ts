@@ -1,5 +1,13 @@
 import { robot } from "./robot";
 
+it("creates a unique robot each time", () => {
+  const testRobot1 = robot();
+  testRobot1.place();
+  const testRobot2 = robot();
+  testRobot2.place({ x: 2, y: 2, f: "South" });
+  expect(testRobot1.position).not.toEqual(testRobot2.position);
+});
+
 describe("place", () => {
   it("can place itself in the default position", () => {
     const testRobot = robot();
@@ -38,3 +46,5 @@ describe("place", () => {
     });
   });
 });
+
+// describe("move", () => {});

@@ -30,9 +30,9 @@ const isValidPosition = (unknownPosition: any): unknownPosition is Position => {
 };
 
 const robot = () => {
-  const position: Position = defaultPosition;
+  const position: Position = { ...defaultPosition };
   return {
-    place: (newPosition: unknown = defaultPosition) => {
+    place: (newPosition: unknown = { ...defaultPosition }) => {
       if (!isValidPosition(newPosition)) {
         throw new Error();
       }
