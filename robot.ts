@@ -1,7 +1,7 @@
 const coordinates = Array.from(new Array(5).keys());
 type Coordinates = typeof coordinates[number];
 
-const faces = ["East", "South", "West", "North"];
+const faces = ["EAST", "SOUTH", "WEST", "NORTH"];
 type Faces = typeof faces[number];
 
 type Position = {
@@ -13,7 +13,7 @@ type Position = {
 const defaultPosition = {
   x: 0,
   y: 0,
-  f: "North",
+  f: "NORTH",
 };
 
 const isValidPosition = (unknownPosition: any): unknownPosition is Position => {
@@ -40,7 +40,7 @@ const robot = () => {
       position = newPosition;
     },
     move: () => {
-      if (position.f === "South") {
+      if (position.f === "SOUTH") {
         if (position.y === 0) {
           throw new Error();
         }
@@ -48,7 +48,7 @@ const robot = () => {
         return;
       }
 
-      if (position.f === "North") {
+      if (position.f === "NORTH") {
         if (position.y === coordinates.length - 1) {
           throw new Error();
         }
@@ -56,7 +56,7 @@ const robot = () => {
         return;
       }
 
-      if (position.f === "West") {
+      if (position.f === "WEST") {
         if (position.x === 0) {
           throw new Error();
         }
@@ -64,7 +64,7 @@ const robot = () => {
         return;
       }
 
-      if (position.f === "East") {
+      if (position.f === "EAST") {
         if (position.x === coordinates.length - 1) {
           throw new Error();
         }
