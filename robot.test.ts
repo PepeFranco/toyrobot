@@ -26,6 +26,16 @@ describe("place", () => {
     expect(testRobot.getPosition()).toEqual(givenPosition);
   });
 
+  it("can place itself after being placed", () => {
+    const testRobot = robot();
+    const givenPosition1 = { x: 0, y: 3, f: "South" };
+    testRobot.place(givenPosition1);
+    expect(testRobot.getPosition()).toEqual(givenPosition1);
+    const givenPosition2 = { x: 2, y: 1, f: "North" };
+    testRobot.place(givenPosition2);
+    expect(testRobot.getPosition()).toEqual(givenPosition2);
+  });
+
   describe("invalid positions", () => {
     it("throws if given invalid x", () => {
       const testRobot = robot();
