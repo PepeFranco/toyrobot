@@ -1,7 +1,7 @@
 const coordinates = Array.from(new Array(5).keys());
 type Coordinates = typeof coordinates[number];
 
-const faces = ["North", "South", "West", "East"];
+const faces = ["East", "South", "West", "North"];
 type Faces = typeof faces[number];
 
 type Position = {
@@ -60,7 +60,12 @@ const robot = () => {
         position.f = "East";
         return;
       }
-      position.f = "West";
+      const currentFaceInArray = faces.indexOf(position.f);
+      if (currentFaceInArray === 0) {
+        position.f = faces[faces.length - 1];
+        return;
+      }
+      position.f = faces[currentFaceInArray - 1];
     },
     getPosition: () => position,
   };
