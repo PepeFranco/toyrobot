@@ -50,7 +50,14 @@ const robot = () => {
         position.y--;
         return;
       }
-      position.y++;
+
+      if (position.f === "North") {
+        if (position.y === coordinates.length - 1) {
+          throw new Error();
+        }
+        position.y++;
+        return;
+      }
     },
     left: () => {
       const currentFaceInArray = faces.indexOf(position.f);

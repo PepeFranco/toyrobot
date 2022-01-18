@@ -78,10 +78,21 @@ describe("move", () => {
     expect(() => testRobot.move()).toThrow();
   });
 
-  it("cannot move off the table", () => {
+  it("cannot move off the table going South", () => {
     const testRobot = robot();
     const givenPosition = { x: 0, y: 0, f: "South" };
     testRobot.place(givenPosition);
+    expect(() => testRobot.move()).toThrow();
+  });
+
+  it("cannot move off the table going North", () => {
+    const testRobot = robot();
+    testRobot.place();
+    testRobot.move();
+    testRobot.move();
+    testRobot.move();
+    testRobot.move();
+    expect(testRobot.getPosition().y).toEqual(4);
     expect(() => testRobot.move()).toThrow();
   });
 });
