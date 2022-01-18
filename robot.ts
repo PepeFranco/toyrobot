@@ -35,14 +35,19 @@ const robot = () => {
   return {
     place: (newPosition: unknown = { ...defaultPosition }) => {
       if (!isValidPosition(newPosition)) {
-        throw new Error();
+        throw new Error(
+          `Could not place robot in position: ${JSON.stringify(newPosition)}`
+        );
       }
       position = newPosition;
     },
     move: () => {
+      if (!position) {
+        throw new Error("Robot has not been placed");
+      }
       if (position.f === "SOUTH") {
         if (position.y === 0) {
-          throw new Error();
+          throw new Error("Almost fell of the table");
         }
         position.y--;
         return;
@@ -50,7 +55,7 @@ const robot = () => {
 
       if (position.f === "NORTH") {
         if (position.y === coordinates.length - 1) {
-          throw new Error();
+          throw new Error("Almost fell of the table");
         }
         position.y++;
         return;
@@ -58,7 +63,7 @@ const robot = () => {
 
       if (position.f === "WEST") {
         if (position.x === 0) {
-          throw new Error();
+          throw new Error("Almost fell of the table");
         }
         position.x--;
         return;
@@ -66,13 +71,16 @@ const robot = () => {
 
       if (position.f === "EAST") {
         if (position.x === coordinates.length - 1) {
-          throw new Error();
+          throw new Error("Almost fell of the table");
         }
         position.x++;
         return;
       }
     },
     left: () => {
+      if (!position) {
+        throw new Error("Robot has not been placed");
+      }
       const currentFaceInArray = faces.indexOf(position.f);
       if (currentFaceInArray === 0) {
         position.f = faces[faces.length - 1];
@@ -81,6 +89,9 @@ const robot = () => {
       position.f = faces[currentFaceInArray - 1];
     },
     right: () => {
+      if (!position) {
+        throw new Error("Robot has not been placed");
+      }
       const currentFaceInArray = faces.indexOf(position.f);
       if (currentFaceInArray === faces.length - 1) {
         position.f = faces[0];
@@ -88,7 +99,12 @@ const robot = () => {
       }
       position.f = faces[currentFaceInArray + 1];
     },
-    getPosition: () => position,
+    getPosition: () => {
+      if (!position) {
+        throw new Error("Robot has not been placed");
+      }
+      return position;
+    },
   };
 };
 
