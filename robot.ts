@@ -56,11 +56,15 @@ const robot = () => {
       position.y++;
     },
     rotate: (rotation: Rotations) => {
+      const currentFaceInArray = faces.indexOf(position.f);
       if (rotation === "Right") {
-        position.f = "East";
+        if (currentFaceInArray === faces.length - 1) {
+          position.f = faces[0];
+          return;
+        }
+        position.f = faces[currentFaceInArray + 1];
         return;
       }
-      const currentFaceInArray = faces.indexOf(position.f);
       if (currentFaceInArray === 0) {
         position.f = faces[faces.length - 1];
         return;
