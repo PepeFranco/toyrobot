@@ -85,3 +85,12 @@ describe("move", () => {
     expect(() => testRobot.move()).toThrow();
   });
 });
+
+describe("rotate", () => {
+  it("can rotate", () => {
+    const testRobot = robot();
+    testRobot.place();
+    testRobot.rotate("Left");
+    expect(testRobot.getPosition()).toEqual({ x: 0, y: 0, f: "West" });
+  });
+});

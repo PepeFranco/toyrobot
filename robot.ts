@@ -16,6 +16,9 @@ const defaultPosition = {
   f: "North",
 };
 
+const rotations = ["Left", "Right"];
+type Rotations = typeof rotations[number];
+
 const isValidPosition = (unknownPosition: any): unknownPosition is Position => {
   if (!coordinates.includes(unknownPosition.x)) {
     return false;
@@ -51,6 +54,9 @@ const robot = () => {
         return;
       }
       position.y++;
+    },
+    rotate: (rotation: Rotations) => {
+      position.f = "West";
     },
     getPosition: () => position,
   };
