@@ -1,4 +1,4 @@
-import { execute } from "./index";
+import { execute } from "./execute";
 import { readFileSync } from "fs";
 import { robot } from "./robot";
 
