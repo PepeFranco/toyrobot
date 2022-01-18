@@ -66,4 +66,16 @@ describe("Main file", () => {
 
     expect(() => execute("./fakeFilePath")).toThrow();
   });
+
+  it("surfaces robot errors", () => {
+    const mockMove = jest.fn().mockImplementation(() => {
+      throw new Error();
+    });
+    robot.mockReturnValue({ move: mockMove });
+
+    const fakeFileContents = "MOVE";
+    readFileSync.mockReturnValue(fakeFileContents);
+
+    expect(() => execute("./fakeFilePath")).toThrow();
+  });
 });
