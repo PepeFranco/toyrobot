@@ -87,18 +87,28 @@ describe("move", () => {
 });
 
 describe("rotate", () => {
-  it("can rotate left", () => {
+  it("can rotate left after being placed", () => {
     const testRobot = robot();
     testRobot.place();
     testRobot.left();
     expect(testRobot.getPosition()).toEqual({ x: 0, y: 0, f: "West" });
   });
 
-  it("can rotate right", () => {
+  it("cannot rotate left if not placed", () => {
+    const testRobot = robot();
+    expect(() => testRobot.left()).toThrow();
+  });
+
+  it("can rotate right after being placed", () => {
     const testRobot = robot();
     testRobot.place();
     testRobot.right();
     expect(testRobot.getPosition()).toEqual({ x: 0, y: 0, f: "East" });
+  });
+
+  it("cannot rotate right if not placed", () => {
+    const testRobot = robot();
+    expect(() => testRobot.right()).toThrow();
   });
 
   it("can rotate to all directions left", () => {
