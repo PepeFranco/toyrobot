@@ -48,11 +48,19 @@ describe("place", () => {
 });
 
 describe("move", () => {
-  it("can move after being placed", () => {
+  it("can move after being placed in default position", () => {
     const testRobot = robot();
     testRobot.place();
     testRobot.move();
     expect(testRobot.getPosition()).toEqual({ x: 0, y: 1, f: "North" });
+  });
+
+  it("can move after being placed in given position", () => {
+    const testRobot = robot();
+    const givenPosition = { x: 0, y: 3, f: "South" };
+    testRobot.place(givenPosition);
+    testRobot.move();
+    expect(testRobot.getPosition()).toEqual({ x: 0, y: 2, f: "South" });
   });
 
   it("cannot move if not placed", () => {

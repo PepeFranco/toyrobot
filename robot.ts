@@ -43,6 +43,10 @@ const robot = () => {
       if (!position) {
         throw new Error();
       }
+      if (position.f === "South") {
+        position.y--;
+        return;
+      }
       position.y++;
     },
     getPosition: () => position,
