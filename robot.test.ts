@@ -1,5 +1,8 @@
 import { robot } from "./robot";
 
-it("can call", () => {
-  robot();
+describe("place", () => {
+  it("can place itself", () => {
+    const testRobot = robot();
+    testRobot.place();
+  });
 });
