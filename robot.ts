@@ -58,6 +58,22 @@ const robot = () => {
         position.y++;
         return;
       }
+
+      if (position.f === "West") {
+        if (position.x === 0) {
+          throw new Error();
+        }
+        position.x--;
+        return;
+      }
+
+      if (position.f === "East") {
+        if (position.x === coordinates.length - 1) {
+          throw new Error();
+        }
+        position.x++;
+        return;
+      }
     },
     left: () => {
       const currentFaceInArray = faces.indexOf(position.f);

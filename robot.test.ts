@@ -95,6 +95,27 @@ describe("move", () => {
     expect(testRobot.getPosition().y).toEqual(4);
     expect(() => testRobot.move()).toThrow();
   });
+
+  it("cannot move off the table going West", () => {
+    const testRobot = robot();
+    testRobot.place({ x: 1, y: 1, f: "North" });
+    testRobot.left();
+    testRobot.move();
+    expect(testRobot.getPosition().x).toEqual(0);
+    expect(() => testRobot.move()).toThrow();
+  });
+
+  it("cannot move off the table going East", () => {
+    const testRobot = robot();
+    testRobot.place();
+    testRobot.right();
+    testRobot.move();
+    testRobot.move();
+    testRobot.move();
+    testRobot.move();
+    expect(testRobot.getPosition().x).toEqual(4);
+    expect(() => testRobot.move()).toThrow();
+  });
 });
 
 describe("rotate", () => {
