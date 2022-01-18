@@ -90,53 +90,53 @@ describe("rotate", () => {
   it("can rotate left", () => {
     const testRobot = robot();
     testRobot.place();
-    testRobot.rotate("Left");
+    testRobot.left();
     expect(testRobot.getPosition()).toEqual({ x: 0, y: 0, f: "West" });
   });
 
   it("can rotate right", () => {
     const testRobot = robot();
     testRobot.place();
-    testRobot.rotate("Right");
+    testRobot.right();
     expect(testRobot.getPosition()).toEqual({ x: 0, y: 0, f: "East" });
   });
 
   it("can rotate to all directions left", () => {
     const testRobot = robot();
     testRobot.place();
-    testRobot.rotate("Left");
+    testRobot.left();
     expect(testRobot.getPosition().f).toEqual("West");
-    testRobot.rotate("Left");
+    testRobot.left();
     expect(testRobot.getPosition().f).toEqual("South");
-    testRobot.rotate("Left");
+    testRobot.left();
     expect(testRobot.getPosition().f).toEqual("East");
-    testRobot.rotate("Left");
+    testRobot.left();
     expect(testRobot.getPosition().f).toEqual("North");
   });
 
   it("can rotate to all directions right", () => {
     const testRobot = robot();
     testRobot.place();
-    testRobot.rotate("Right");
+    testRobot.right();
     expect(testRobot.getPosition().f).toEqual("East");
-    testRobot.rotate("Right");
+    testRobot.right();
     expect(testRobot.getPosition().f).toEqual("South");
-    testRobot.rotate("Right");
+    testRobot.right();
     expect(testRobot.getPosition().f).toEqual("West");
-    testRobot.rotate("Right");
+    testRobot.right();
     expect(testRobot.getPosition().f).toEqual("North");
   });
 
   it("can alternate directions", () => {
     const testRobot = robot();
     testRobot.place();
-    testRobot.rotate("Right");
+    testRobot.right();
     expect(testRobot.getPosition().f).toEqual("East");
-    testRobot.rotate("Left");
+    testRobot.left();
     expect(testRobot.getPosition().f).toEqual("North");
-    testRobot.rotate("Left");
+    testRobot.left();
     expect(testRobot.getPosition().f).toEqual("West");
-    testRobot.rotate("Right");
+    testRobot.right();
     expect(testRobot.getPosition().f).toEqual("North");
   });
 });

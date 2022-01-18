@@ -16,9 +16,6 @@ const defaultPosition = {
   f: "North",
 };
 
-const rotations = ["Left", "Right"];
-type Rotations = typeof rotations[number];
-
 const isValidPosition = (unknownPosition: any): unknownPosition is Position => {
   if (!coordinates.includes(unknownPosition.x)) {
     return false;
@@ -55,21 +52,21 @@ const robot = () => {
       }
       position.y++;
     },
-    rotate: (rotation: Rotations) => {
+    left: () => {
       const currentFaceInArray = faces.indexOf(position.f);
-      if (rotation === "Right") {
-        if (currentFaceInArray === faces.length - 1) {
-          position.f = faces[0];
-          return;
-        }
-        position.f = faces[currentFaceInArray + 1];
-        return;
-      }
       if (currentFaceInArray === 0) {
         position.f = faces[faces.length - 1];
         return;
       }
       position.f = faces[currentFaceInArray - 1];
+    },
+    right: () => {
+      const currentFaceInArray = faces.indexOf(position.f);
+      if (currentFaceInArray === faces.length - 1) {
+        position.f = faces[0];
+        return;
+      }
+      position.f = faces[currentFaceInArray + 1];
     },
     getPosition: () => position,
   };
