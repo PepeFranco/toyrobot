@@ -16,9 +16,7 @@ const defaultPosition = {
   f: "North",
 };
 
-const isValidPosition = (
-  unknownPosition: unknown
-): unknownPosition is Position => {
+const isValidPosition = (unknownPosition: any): unknownPosition is Position => {
   if (!coordinates.includes(unknownPosition.x)) {
     return false;
   }
@@ -34,7 +32,7 @@ const isValidPosition = (
 const robot = () => {
   const position: Position = defaultPosition;
   return {
-    place: (newPosition: Position = defaultPosition) => {
+    place: (newPosition: unknown = defaultPosition) => {
       if (!isValidPosition(newPosition)) {
         throw new Error();
       }
