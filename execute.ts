@@ -4,11 +4,11 @@ import { robot } from "./robot";
 const validInstructions = ["PLACE", "MOVE", "LEFT", "RIGHT", "REPORT"];
 
 const execute = (path: string) => {
-  const fileData = readFileSync(path);
+  const fileData = readFileSync(path).toString();
   const runRobot = robot();
 
   const instructions = fileData.split("\n");
-  instructions.map((instruction) => {
+  instructions.map((instruction: string) => {
     const trimmedInstruction = instruction.trim();
     const firstWordInInstruction = trimmedInstruction.split(" ")[0].trim();
 
