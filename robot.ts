@@ -44,6 +44,9 @@ const robot = () => {
         throw new Error();
       }
       if (position.f === "South") {
+        if (position.y === 0) {
+          throw new Error();
+        }
         position.y--;
         return;
       }

@@ -67,4 +67,11 @@ describe("move", () => {
     const testRobot = robot();
     expect(() => testRobot.move()).toThrow();
   });
+
+  it("cannot move off the table", () => {
+    const testRobot = robot();
+    const givenPosition = { x: 0, y: 0, f: "South" };
+    testRobot.place(givenPosition);
+    expect(() => testRobot.move()).toThrow();
+  });
 });
