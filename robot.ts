@@ -56,6 +56,10 @@ const robot = () => {
       position.y++;
     },
     rotate: (rotation: Rotations) => {
+      if (rotation === "Right") {
+        position.f = "East";
+        return;
+      }
       position.f = "West";
     },
     getPosition: () => position,
