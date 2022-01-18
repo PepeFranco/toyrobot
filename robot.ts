@@ -22,6 +22,12 @@ const isValidPosition = (
   if (!coordinates.includes(unknownPosition.x)) {
     return false;
   }
+  if (!coordinates.includes(unknownPosition.y)) {
+    return false;
+  }
+  if (!faces.includes(unknownPosition.f)) {
+    return false;
+  }
   return true;
 };
 

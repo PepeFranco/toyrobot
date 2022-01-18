@@ -18,9 +18,23 @@ describe("place", () => {
     expect(testRobot.position).toEqual(givenPosition);
   });
 
-  it("throws if given invalid position", () => {
-    const testRobot = robot();
-    const givenPosition = { x: -1, y: 1, f: "South" };
-    expect(() => testRobot.place(givenPosition)).toThrow();
+  describe("invalid positions", () => {
+    it("throws if given invalid x", () => {
+      const testRobot = robot();
+      const givenPosition = { x: -2, y: 1, f: "South" };
+      expect(() => testRobot.place(givenPosition)).toThrow();
+    });
+
+    it("throws if given invalid y", () => {
+      const testRobot = robot();
+      const givenPosition = { x: 1, y: "1", f: "South" };
+      expect(() => testRobot.place(givenPosition)).toThrow();
+    });
+
+    it("throws if given invalid f", () => {
+      const testRobot = robot();
+      const givenPosition = { x: 1, y: 1, f: null };
+      expect(() => testRobot.place(givenPosition)).toThrow();
+    });
   });
 });
