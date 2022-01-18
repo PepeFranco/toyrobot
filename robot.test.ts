@@ -10,4 +10,11 @@ describe("place", () => {
       f: "North",
     });
   });
+
+  it("can place itself in a given position", () => {
+    const testRobot = robot();
+    const givenPosition = { x: 0, y: 3, f: "South" };
+    testRobot.place(givenPosition);
+    expect(testRobot.position).toEqual(givenPosition);
+  });
 });
