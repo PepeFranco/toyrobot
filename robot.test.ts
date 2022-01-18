@@ -5,14 +5,14 @@ it("creates a unique robot each time", () => {
   testRobot1.place();
   const testRobot2 = robot();
   testRobot2.place({ x: 2, y: 2, f: "South" });
-  expect(testRobot1.position).not.toEqual(testRobot2.position);
+  expect(testRobot1.getPosition()).not.toEqual(testRobot2.getPosition());
 });
 
 describe("place", () => {
   it("can place itself in the default position", () => {
     const testRobot = robot();
     testRobot.place();
-    expect(testRobot.position).toEqual({
+    expect(testRobot.getPosition()).toEqual({
       x: 0,
       y: 0,
       f: "North",
@@ -23,7 +23,7 @@ describe("place", () => {
     const testRobot = robot();
     const givenPosition = { x: 0, y: 3, f: "South" };
     testRobot.place(givenPosition);
-    expect(testRobot.position).toEqual(givenPosition);
+    expect(testRobot.getPosition()).toEqual(givenPosition);
   });
 
   describe("invalid positions", () => {
@@ -52,6 +52,11 @@ describe("move", () => {
     const testRobot = robot();
     testRobot.place();
     testRobot.move();
-    expect(testRobot.position).toEqual({ x: 0, y: 1, f: "North" });
+    expect(testRobot.getPosition()).toEqual({ x: 0, y: 1, f: "North" });
+  });
+
+  it("cannot move if not placed", () => {
+    const testRobot = robot();
+    expect(() => testRobot.move()).toThrow();
   });
 });

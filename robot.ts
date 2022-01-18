@@ -30,20 +30,22 @@ const isValidPosition = (unknownPosition: any): unknownPosition is Position => {
 };
 
 const robot = () => {
-  const position: Position = { ...defaultPosition };
+  let position: Position | undefined = undefined;
+
   return {
     place: (newPosition: unknown = { ...defaultPosition }) => {
       if (!isValidPosition(newPosition)) {
         throw new Error();
       }
-      position.x = newPosition.x;
-      position.y = newPosition.y;
-      position.f = newPosition.f;
+      position = newPosition;
     },
     move: () => {
+      if (!position) {
+        throw new Error();
+      }
       position.y++;
     },
-    position,
+    getPosition: () => position,
   };
 };
 
