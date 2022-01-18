@@ -10,7 +10,14 @@ const execute = (path: string) => {
   const instructions = fileData.split("\n");
   instructions.map((instruction) => {
     const trimmedInstruction = instruction.trim();
-    const firstWordInInstruction = trimmedInstruction.split(" ")[0];
+    const firstWordInInstruction = trimmedInstruction.split(" ")[0].trim();
+
+    if (!firstWordInInstruction) {
+      return;
+    }
+    if (!validInstructions.includes(firstWordInInstruction)) {
+      throw new Error("An invalid command was given");
+    }
 
     if (firstWordInInstruction === "PLACE") {
       const positionValues = trimmedInstruction.split(" ")[1].split(",");

@@ -56,4 +56,14 @@ describe("Main file", () => {
     expect(mockRobot.left).toHaveBeenCalled();
     expect(mockRobot.getPosition).toHaveBeenCalled();
   });
+
+  it("rejects invalid commands", () => {
+    const mockPlace = jest.fn();
+    robot.mockReturnValue({ place: mockPlace });
+
+    const fakeFileContents = "FLY";
+    readFileSync.mockReturnValue(fakeFileContents);
+
+    expect(() => execute("./fakeFilePath")).toThrow();
+  });
 });
