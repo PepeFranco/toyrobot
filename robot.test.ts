@@ -17,4 +17,10 @@ describe("place", () => {
     testRobot.place(givenPosition);
     expect(testRobot.position).toEqual(givenPosition);
   });
+
+  it("throws if given invalid position", () => {
+    const testRobot = robot();
+    const givenPosition = { x: -1, y: 1, f: "South" };
+    expect(() => testRobot.place(givenPosition)).toThrow();
+  });
 });
