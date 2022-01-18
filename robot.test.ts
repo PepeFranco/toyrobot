@@ -47,4 +47,11 @@ describe("place", () => {
   });
 });
 
-// describe("move", () => {});
+describe("move", () => {
+  it("can move after being placed", () => {
+    const testRobot = robot();
+    testRobot.place();
+    testRobot.move();
+    expect(testRobot.position).toEqual({ x: 0, y: 1, f: "North" });
+  });
+});

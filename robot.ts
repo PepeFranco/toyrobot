@@ -40,6 +40,9 @@ const robot = () => {
       position.y = newPosition.y;
       position.f = newPosition.f;
     },
+    move: () => {
+      position.y++;
+    },
     position,
   };
 };
